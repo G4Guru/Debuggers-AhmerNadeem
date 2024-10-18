@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #d4af37;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #d4af37;
+        }
+
+        .account-section {
+            background-color: #1a1a1a;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+        }
+
+        .account-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #d4af37;
+        }
+
+        .account-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .account-info div {
+            display: inline-block;
+        }
+
+        .copy-button {
+            background-color: #d4af37;
+            border: none;
+            color: black;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .copy-button:hover {
+            background-color: #b79332;
+        }
+
+        .copy-button:active {
+            transform: scale(0.98);
+        }
+
+        .copied {
+            display: none;
+            color: #50c878;
+            font-size: 0.9em;
+            margin-left: 10px;
+        }
+
+        .copied.show {
+            display: inline;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Account Details</h1>
+
+    <!-- Nayapay Section -->
+    <div class="account-section">
+        <div class="account-title"><img src="nayapay.png" alt="" style="width: 20px; height: 20px;"> Nayapay</div>
+        <div class="account-info">
+            <div><strong>Name:</strong> Ahmer Nadeem</div>
+            <div><strong>Account #:</strong> <span id="nayapay-account">00000000000</span></div>
+            <button class="copy-button" onclick="copyToClipboard('nayapay-account')">Copy</button>
+            <span class="copied" id="copied-nayapay">Copied!</span>
+        </div>
+    </div>
+
+    <!-- Sadapay Section -->
+    <div class="account-section">
+        <div class="account-title"><img src="sadapay.png" alt="" style="width: 20px; height: 20px;"> Sadapay</div>
+        <div class="account-info">
+            <div><strong>Name:</strong> Ahmer Nadeem</div>
+            <div><strong>Account #:</strong> <span id="sadapay-account">00000000000</span></div>
+            <button class="copy-button" onclick="copyToClipboard('sadapay-account')">Copy</button>
+            <span class="copied" id="copied-sadapay">Copied!</span>
+        </div>
+    </div>
+
+    <!-- Jazzcash Section -->
+    <div class="account-section">
+        <div class="account-title"><img src="jazzcash.png" alt="" style="width: 20px; height: 20px;"> Jazzcash</div>
+        <div class="account-info">
+            <div><strong>Name:</strong> Ahmer Nadeem</div>
+            <div><strong>Account #:</strong> <span id="jazzcash-account">00000000000</span></div>
+            <button class="copy-button" onclick="copyToClipboard('jazzcash-account')">Copy</button>
+            <span class="copied" id="copied-jazzcash">Copied!</span>
+        </div>
+    </div>
+
+    <!-- Bank Account Section -->
+    <div class="account-section">
+        <div class="account-title"><img src="Bankislami.png" alt="" style="width: 20px; height: 20px;"> Bank Islamic</div>
+        <div class="account-info">
+            <div><strong>Name:</strong> Ahmer Nadeem</div>
+            <div><strong>Account #:</strong> <span id="bank-account">00000000000</span></div>
+            <button class="copy-button" onclick="copyToClipboard('bank-account')">Copy</button>
+            <span class="copied" id="copied-bank">Copied!</span>
+        </div>
+    </div>
+
+    <!-- Payoneer Section -->
+    <h1>For International Transactions</h1>
+    <div class="account-section">
+        <div class="account-title"><img src="payoneer.png" alt="" style="width: 20px; height: 20px;"> Payoneer</div>
+        <div class="account-info">
+            <div><strong>Name:</strong> Ahmer Nadeem</div>
+            <div><strong>Currency Available:</strong> USD, EUR, GBP</div>
+            <div><strong>Account #:</strong> <span id="payoneer-account">00000000000</span></div>
+            <button class="copy-button" onclick="copyToClipboard('payoneer-account')">Copy</button>
+            <span class="copied" id="copied-payoneer">Copied!</span>
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard(id) {
+            var text = document.getElementById(id).textContent;
+            var textarea = document.createElement("textarea");
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textarea);
+
+            var copiedText = document.getElementById("copied-" + id.split('-')[0]);
+            copiedText.classList.add('show');
+            setTimeout(() => copiedText.classList.remove('show'), 1500);
+        }
+    </script>
+
+</body>
+</html>
